@@ -392,3 +392,68 @@ input[type="range"]::-moz-range-thumb {
     border-color: #1f2937;
   }
 }
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+
+  /* Reduce animation complexity on mobile for better performance */
+  * {
+    animation-duration: 0.2s !important;
+  }
+
+  /* Better touch targets */
+  button,
+  a,
+  input,
+  select,
+  label {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent text size adjustment on iOS */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Smoother scrolling on mobile */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+
+  /* Optimize for tablet touch targets */
+  button,
+  a {
+    min-height: 48px;
+  }
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (max-width: 768px) {
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+  /* Sharper rendering for retina displays */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

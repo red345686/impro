@@ -176,33 +176,33 @@ export default function Home() {
       {/* Floating Help Button */}
       <button
         onClick={() => setShowTooltips(!showTooltips)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-linear-to-br from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group hover:shadow-blue-500/50"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 w-12 h-12 md:w-14 md:h-14 bg-linear-to-br from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center group hover:shadow-blue-500/50"
         title={showTooltips ? 'Hide hints' : 'Show hints'}
         aria-label={showTooltips ? 'Hide hints' : 'Show hints'}
       >
-        <span className="text-2xl filter drop-shadow-lg">{showTooltips ? '💡' : '❓'}</span>
-        <span className="absolute bottom-full mb-3 right-0 px-4 py-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+        <span className="text-xl md:text-2xl filter drop-shadow-lg">{showTooltips ? '💡' : '❓'}</span>
+        <span className="absolute bottom-full mb-3 right-0 px-4 py-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg hidden md:block">
           {showTooltips ? 'Hide hints' : 'Show hints'}
           <span className="absolute top-full right-4 -mt-1 border-4 border-transparent border-t-zinc-900 dark:border-t-zinc-100"></span>
         </span>
       </button>
 
-      <div className="max-w-7xl mx-auto p-4 md:p-8 space-y-8">
+      <div className="max-w-7xl mx-auto p-3 sm:p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6 lg:space-y-8">
         {/* Header */}
-        <header className="text-center space-y-6 pt-8 pb-4 animate-fade-in">
+        <header className="text-center space-y-4 md:space-y-6 pt-4 md:pt-8 pb-2 md:pb-4 animate-fade-in">
           <div className="inline-block">
-            <h1 className="text-5xl md:text-6xl font-extrabold bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent tracking-tight leading-tight px-2">
               AI Image Processor
             </h1>
-            <div className="h-1 w-24 mx-auto mt-4 bg-linear-to-r from-blue-600 to-purple-600 rounded-full"></div>
+            <div className="h-1 w-16 md:w-24 mx-auto mt-3 md:mt-4 bg-linear-to-r from-blue-600 to-purple-600 rounded-full"></div>
           </div>
-          <p className="text-zinc-600 dark:text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto font-medium">
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto font-medium px-4">
             Transform your images with AI-powered enhancement, resizing, and restoration
           </p>
 
           {/* Keyboard Shortcuts Hint */}
           {showTooltips && (
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium shadow-lg animate-slide-up">
+            <div className="hidden md:inline-flex items-center gap-3 px-6 py-3 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium shadow-lg animate-slide-up">
               <span className="text-lg">⌨️</span>
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1.5">
@@ -225,8 +225,8 @@ export default function Home() {
 
         {/* Step Progress Bar */}
         {images.length > 0 && (
-          <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md rounded-2xl shadow-xl border border-zinc-200/50 dark:border-zinc-800/50 p-6 animate-scale-in">
-            <div className="flex items-center justify-center max-w-4xl mx-auto">
+          <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md rounded-xl md:rounded-2xl shadow-xl border border-zinc-200/50 dark:border-zinc-800/50 p-3 sm:p-4 md:p-6 animate-scale-in overflow-x-auto">
+            <div className="flex items-center justify-center max-w-4xl mx-auto min-w-max px-2">
               {steps.map((step, index) => {
                 const status = getStepStatus(step.id);
                 return (
@@ -238,47 +238,47 @@ export default function Home() {
                         }
                       }}
                       disabled={status === 'disabled'}
-                      className={`flex flex-col items-center gap-2 transition-all duration-300 ${status === 'disabled'
-                          ? 'opacity-40 cursor-not-allowed'
-                          : 'cursor-pointer hover:scale-110 active:scale-95'
+                      className={`flex flex-col items-center gap-1.5 md:gap-2 transition-all duration-300 ${status === 'disabled'
+                        ? 'opacity-40 cursor-not-allowed'
+                        : 'cursor-pointer hover:scale-110 active:scale-95'
                         }`}
                     >
                       <div
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl transition-all duration-300 relative ${status === 'active'
-                            ? 'bg-linear-to-br from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white shadow-xl shadow-blue-500/50 scale-110'
-                            : status === 'completed'
-                              ? 'bg-linear-to-br from-green-500 to-emerald-600 dark:from-green-600 dark:to-emerald-700 text-white shadow-md'
-                              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500'
+                        className={`w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center text-base md:text-xl transition-all duration-300 relative ${status === 'active'
+                          ? 'bg-linear-to-br from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white shadow-xl shadow-blue-500/50 scale-110'
+                          : status === 'completed'
+                            ? 'bg-linear-to-br from-green-500 to-emerald-600 dark:from-green-600 dark:to-emerald-700 text-white shadow-md'
+                            : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500'
                           }`}
                       >
                         {status === 'completed' ? (
-                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                           </svg>
                         ) : (
                           <span className="filter drop-shadow-sm">{step.icon}</span>
                         )}
                         {status === 'active' && (
-                          <span className="absolute -inset-1 bg-linear-to-br from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 rounded-xl opacity-20 blur-lg animate-pulse-soft"></span>
+                          <span className="absolute -inset-1 bg-linear-to-br from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 rounded-lg md:rounded-xl opacity-20 blur-lg animate-pulse-soft"></span>
                         )}
                       </div>
                       <span
-                        className={`text-xs font-semibold transition-all duration-300 ${status === 'active'
-                            ? 'text-blue-600 dark:text-blue-400 scale-105'
-                            : status === 'completed'
-                              ? 'text-green-600 dark:text-green-400'
-                              : 'text-zinc-500 dark:text-zinc-500'
+                        className={`text-[10px] sm:text-xs font-semibold transition-all duration-300 whitespace-nowrap ${status === 'active'
+                          ? 'text-blue-600 dark:text-blue-400 scale-105'
+                          : status === 'completed'
+                            ? 'text-green-600 dark:text-green-400'
+                            : 'text-zinc-500 dark:text-zinc-500'
                           }`}
                       >
                         {step.label}
                       </span>
                     </button>
                     {index < steps.length - 1 && (
-                      <div className="w-24 h-0.5 mx-4 bg-zinc-200 dark:bg-zinc-800 relative overflow-hidden rounded-full">
+                      <div className="w-12 sm:w-16 md:w-24 h-0.5 mx-2 md:mx-4 bg-zinc-200 dark:bg-zinc-800 relative overflow-hidden rounded-full">
                         <div
                           className={`absolute inset-0 transition-all duration-700 ease-out rounded-full ${getStepStatus(steps[index + 1].id) === 'completed' || getStepStatus(steps[index + 1].id) === 'active'
-                              ? 'bg-linear-to-r from-green-500 to-emerald-600 dark:from-green-600 dark:to-emerald-700'
-                              : ''
+                            ? 'bg-linear-to-r from-green-500 to-emerald-600 dark:from-green-600 dark:to-emerald-700'
+                            : ''
                             }`}
                         />
                       </div>
@@ -292,33 +292,33 @@ export default function Home() {
 
         {/* Main Content */}
         {currentStep === 'upload' || images.length === 0 ? (
-          <div className="space-y-6 animate-fade-in">
+          <div className="space-y-4 md:space-y-6 animate-fade-in">
             {showTooltips && images.length === 0 && (
-              <div className="bg-linear-to-r from-blue-50 via-purple-50/50 to-pink-50 dark:from-blue-950/50 dark:via-purple-950/30 dark:to-pink-950/50 border-2 border-blue-200/50 dark:border-blue-800/50 rounded-2xl p-8 shadow-lg backdrop-blur-sm animate-slide-up">
-                <div className="flex items-start gap-4">
-                  <div className="shrink-0 w-12 h-12 bg-linear-to-br from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+              <div className="bg-linear-to-r from-blue-50 via-purple-50/50 to-pink-50 dark:from-blue-950/50 dark:via-purple-950/30 dark:to-pink-950/50 border-2 border-blue-200/50 dark:border-blue-800/50 rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg backdrop-blur-sm animate-slide-up">
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 bg-linear-to-br from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500 rounded-lg md:rounded-xl flex items-center justify-center text-xl md:text-2xl shadow-lg">
                     🚀
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold bg-linear-to-r from-blue-700 to-purple-700 dark:from-blue-300 dark:to-purple-300 bg-clip-text text-transparent mb-4">
+                    <h3 className="text-lg md:text-xl font-bold bg-linear-to-r from-blue-700 to-purple-700 dark:from-blue-300 dark:to-purple-300 bg-clip-text text-transparent mb-3 md:mb-4">
                       Get Started in Seconds
                     </h3>
-                    <ul className="space-y-3 stagger-animation">
-                      <li className="flex items-start gap-3 group">
-                        <span className="shrink-0 w-7 h-7 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center font-bold text-sm group-hover:scale-110 transition-transform">1</span>
-                        <span className="text-blue-900 dark:text-blue-100 font-medium flex-1">Upload one or more images by dragging them or clicking the upload area below</span>
+                    <ul className="space-y-2 md:space-y-3 stagger-animation">
+                      <li className="flex items-start gap-2 md:gap-3 group">
+                        <span className="shrink-0 w-6 h-6 md:w-7 md:h-7 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-md md:rounded-lg flex items-center justify-center font-bold text-xs md:text-sm group-hover:scale-110 transition-transform">1</span>
+                        <span className="text-blue-900 dark:text-blue-100 font-medium flex-1 text-sm md:text-base">Upload one or more images by dragging them or clicking the upload area below</span>
                       </li>
-                      <li className="flex items-start gap-3 group">
-                        <span className="shrink-0 w-7 h-7 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-lg flex items-center justify-center font-bold text-sm group-hover:scale-110 transition-transform">2</span>
-                        <span className="text-blue-900 dark:text-blue-100 font-medium flex-1">Configure AI settings to enhance your images with upscaling and restoration</span>
+                      <li className="flex items-start gap-2 md:gap-3 group">
+                        <span className="shrink-0 w-6 h-6 md:w-7 md:h-7 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-md md:rounded-lg flex items-center justify-center font-bold text-xs md:text-sm group-hover:scale-110 transition-transform">2</span>
+                        <span className="text-blue-900 dark:text-blue-100 font-medium flex-1 text-sm md:text-base">Configure AI settings to enhance your images with upscaling and restoration</span>
                       </li>
-                      <li className="flex items-start gap-3 group">
-                        <span className="shrink-0 w-7 h-7 bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 rounded-lg flex items-center justify-center font-bold text-sm group-hover:scale-110 transition-transform">3</span>
-                        <span className="text-blue-900 dark:text-blue-100 font-medium flex-1">Process all images with one click using advanced AI algorithms</span>
+                      <li className="flex items-start gap-2 md:gap-3 group">
+                        <span className="shrink-0 w-6 h-6 md:w-7 md:h-7 bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 rounded-md md:rounded-lg flex items-center justify-center font-bold text-xs md:text-sm group-hover:scale-110 transition-transform">3</span>
+                        <span className="text-blue-900 dark:text-blue-100 font-medium flex-1 text-sm md:text-base">Process all images with one click using advanced AI algorithms</span>
                       </li>
-                      <li className="flex items-start gap-3 group">
-                        <span className="shrink-0 w-7 h-7 bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 rounded-lg flex items-center justify-center font-bold text-sm group-hover:scale-110 transition-transform">4</span>
-                        <span className="text-blue-900 dark:text-blue-100 font-medium flex-1">Download all processed images as a convenient ZIP file</span>
+                      <li className="flex items-start gap-2 md:gap-3 group">
+                        <span className="shrink-0 w-6 h-6 md:w-7 md:h-7 bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 rounded-md md:rounded-lg flex items-center justify-center font-bold text-xs md:text-sm group-hover:scale-110 transition-transform">4</span>
+                        <span className="text-blue-900 dark:text-blue-100 font-medium flex-1 text-sm md:text-base">Download all processed images as a convenient ZIP file</span>
                       </li>
                     </ul>
                   </div>
@@ -328,17 +328,17 @@ export default function Home() {
             <ImageUploader onImagesAdded={handleImagesAdded} />
           </div>
         ) : (
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {/* Left Column - Images */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="lg:col-span-2 space-y-4 md:space-y-6">
               {/* Images Header */}
-              <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md rounded-2xl shadow-xl border border-zinc-200/50 dark:border-zinc-800/50 p-8 card-hover">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h2 className="text-3xl font-bold bg-linear-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
+              <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md rounded-xl md:rounded-2xl shadow-xl border border-zinc-200/50 dark:border-zinc-800/50 p-4 sm:p-6 md:p-8 card-hover">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 md:mb-6 gap-3">
+                  <div className="flex-1">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold bg-linear-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
                       Your Images
                     </h2>
-                    <div className="flex items-center gap-4 mt-2">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-2">
                       <p className="text-sm text-zinc-600 dark:text-zinc-400 font-medium flex items-center gap-2">
                         <span className="inline-block w-2 h-2 bg-blue-500 rounded-full animate-pulse-soft"></span>
                         {images.length} image{images.length !== 1 ? 's' : ''}
@@ -353,24 +353,24 @@ export default function Home() {
                       )}
                     </div>
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex gap-2 md:gap-3 w-full sm:w-auto">
                     <button
                       onClick={handleReset}
-                      className="px-5 py-2.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95 font-medium shadow-sm group"
+                      className="flex-1 sm:flex-none px-3 sm:px-5 py-2 md:py-2.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded-lg md:rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2 hover:scale-105 active:scale-95 font-medium shadow-sm group text-sm md:text-base"
                       title="Reset all (Ctrl+R)"
                     >
-                      <svg className="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 md:w-5 md:h-5 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                       </svg>
-                      <span className="hidden sm:inline">Reset</span>
+                      <span>Reset</span>
                     </button>
                     {currentStep !== 'process' && images.some(img => img.status === 'pending') && (
                       <button
                         onClick={() => setCurrentStep('process')}
-                        className="px-5 py-2.5 bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 dark:hover:from-blue-600 dark:hover:to-purple-600 transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95 font-semibold shadow-lg hover:shadow-xl hover:shadow-blue-500/50"
+                        className="flex-1 sm:flex-none px-3 sm:px-5 py-2 md:py-2.5 bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white rounded-lg md:rounded-xl hover:from-blue-700 hover:to-purple-700 dark:hover:from-blue-600 dark:hover:to-purple-600 transition-all duration-300 flex items-center justify-center gap-1.5 md:gap-2 hover:scale-105 active:scale-95 font-semibold shadow-lg hover:shadow-xl hover:shadow-blue-500/50 text-sm md:text-base"
                       >
                         <span>Continue</span>
-                        <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                       </button>
@@ -380,8 +380,8 @@ export default function Home() {
 
                 {/* Processing Progress */}
                 {isProcessing && (
-                  <div className="space-y-4 mb-6 p-6 bg-linear-to-r from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/50 dark:via-purple-950/30 dark:to-pink-950/50 rounded-2xl border-2 border-blue-200/50 dark:border-blue-800/50 shadow-lg animate-scale-in">
-                    <div className="flex justify-between items-center text-sm font-semibold">
+                  <div className="space-y-3 md:space-y-4 mb-4 md:mb-6 p-4 md:p-6 bg-linear-to-r from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/50 dark:via-purple-950/30 dark:to-pink-950/50 rounded-xl md:rounded-2xl border-2 border-blue-200/50 dark:border-blue-800/50 shadow-lg animate-scale-in">
+                    <div className="flex justify-between items-center text-xs sm:text-sm font-semibold gap-2">
                       <span className="flex items-center gap-3 text-blue-900 dark:text-blue-100">
                         <span className="relative flex h-3 w-3">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -419,7 +419,7 @@ export default function Home() {
                 )}
 
                 {/* Image Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                   {images.map(image => (
                     <ImagePreview
                       key={image.id}
@@ -430,14 +430,14 @@ export default function Home() {
                 </div>
 
                 {/* Add More Button */}
-                <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800">
+                <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-zinc-200 dark:border-zinc-800">
                   <ImageUploader onImagesAdded={handleImagesAdded} />
                 </div>
               </div>
             </div>
 
             {/* Right Column - Settings & Actions */}
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               {/* Step-based Content */}
               {currentStep === 'configure' && (
                 <div className="space-y-6 animate-fade-in">
